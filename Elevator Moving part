@@ -1,0 +1,12 @@
+local Brick =script.Parent
+local function TurnBrick()
+	while true do
+	for i =1,360 do
+		Brick.CFrame = CFrame.new(0,10,0) * CFrame.Angles(math.rad(i),0,0)
+		wait()
+	  end
+	wait()
+	end
+end
+
+TurnBrick()
