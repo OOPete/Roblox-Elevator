@@ -1,0 +1,104 @@
+
+//
+
+local TweenSErvice = game:GetService("TweenService")
+local WalkDoor = script.Parent
+local Door1 = WalkDoor.door1
+local Door2 = WalkDoor.door2
+local Wall1 = WalkDoor.wall1
+local Wall2 = WalkDoor.wall2
+local button1 = WalkDoor.Button1
+local WalkDoor2 = workspace.WalkDoor2
+local button2 = WalkDoor2.Button2
+local Door3 = WalkDoor2.door3
+local Door4 = WalkDoor2.door4
+local Wall3 = WalkDoor2.wall3
+local Wall4 = WalkDoor2.wall4
+local button3 = WalkDoor2.Button3
+local Floor = workspace.floor
+local Floor2 = workspace.floor2
+local Top = workspace.top
+local Top2 = workspace.top2
+
+
+local TweeningInformation = TweenInfo.new(
+	
+	0.6,
+	Enum.EasingStyle.Linear,
+	Enum.EasingDirection.Out,
+	0,
+	false,
+	0
+)
+
+
+-- these are the variables set down in stone
+local Door1Open = {CFrame = CFrame.new(-1.2, 4.9, 43.1)}
+local Door2Open = {CFrame = CFrame.new(-1.2, 4.9, 25.1)}
+local Door1Close = {CFrame = CFrame.new(-1.3, 4.9, 36.4)}
+local Door2Close = {CFrame = CFrame.new(-1.3, 4.9, 31.9)}
+local Tween1Open = TweenSErvice:Create(Door1,TweeningInformation,Door1Open)
+local Tween1Close = TweenSErvice:Create(Door1,TweeningInformation,Door1Close)
+local Tween2Open = TweenSErvice:Create(Door2,TweeningInformation,Door2Open)
+local Tween2Close = TweenSErvice:Create(Door2,TweeningInformation,Door2Close)
+local Door3Open = {CFrame = CFrame.new(-1.2, 45.7, 43.1)}
+local Door4Open = {CFrame = CFrame.new(-1.2, 45.7, 25.1)}
+local Door3Close = {CFrame = CFrame.new(-1.3, 45.7, 36.4)}
+local Door4Close = {CFrame = CFrame.new(-1.3, 45.7, 31.9)}
+local Tween3Open = TweenSErvice:Create(Door3,TweeningInformation,Door3Open)
+local Tween3Close = TweenSErvice:Create(Door3,TweeningInformation,Door3Close)
+local Tween4Open = TweenSErvice:Create(Door4,TweeningInformation,Door4Open)
+local Tween4Close = TweenSErvice:Create(Door4,TweeningInformation,Door4Close)
+
+
+local function up()
+	for i =1,80 do
+		Floor.CFrame = Floor.CFrame+ Vector3.new(0,0.5,0)
+		Top.CFrame = Top.CFrame + Vector3.new(0,0.5,0)
+		wait()
+	end
+	
+end
+
+local function down()
+	for i =1,80 do
+		Floor.CFrame = Floor.CFrame+ Vector3.new(0,-0.5,0)
+		Top.CFrame = Top.CFrame + Vector3.new(0,-0.5,0)
+		wait()
+	end
+	end
+
+
+button1.ClickDetector.MouseClick:connect(function(hit)
+	Tween1Open:Play()
+	Tween2Open:Play()
+	wait(3)
+	Tween1Close:Play()
+	Tween2Close:Play()
+	wait(3)
+	up()
+	wait(2)
+	Tween3Open:Play()
+	Tween4Open:Play()
+	wait(3)
+	Tween3Close:Play()
+	Tween4Close:Play()
+	
+	
+end)
+
+button3.ClickDetector.MouseClick:connect(function(hit)
+	Tween3Open:Play()
+	Tween4Open:Play()
+	wait(3)
+	Tween3Close:Play()
+	Tween4Close:Play()
+	wait(3)
+	down()
+	wait(2)
+	Tween1Open:Play()
+	Tween2Open:Play()
+	wait(3)
+	Tween1Close:Play()
+	Tween2Close:Play()
+end)
